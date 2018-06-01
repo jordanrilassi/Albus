@@ -10,6 +10,10 @@ import Foundation
 
 enum GithubTrendingConstants {
     struct API {
-        static let urlString = "https://api.github.com/repositories?language=swift"
+        static let urlString = "https://api.github.com/search/repositories?q=language:swift&sort=stars&order=desc"
+    }
+    
+    struct Cells {
+        static let trendingCellIdentifier = "trendingCellIdentifier"
     }
 }
