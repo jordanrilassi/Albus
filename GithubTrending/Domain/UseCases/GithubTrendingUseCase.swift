@@ -9,7 +9,8 @@
 import Foundation
 
 public protocol GithubTrendingUseCaseProtocol {
-    func getTrendingRepositories(completionBlock: @escaping ([GithubRepository]) -> Void) -> Void
+    func getTrendingRepositories(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) -> Void
+    func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void)
 }
 
 final class GithubTrendingUseCase: GithubTrendingUseCaseProtocol {
@@ -21,7 +22,11 @@ final class GithubTrendingUseCase: GithubTrendingUseCaseProtocol {
         self.networkRepository = networkRepository
     }
 
-    func getTrendingRepositories(completionBlock: @escaping ([GithubRepository]) -> Void) {
-        self.networkRepository.getTrendingRepositoriesQuery(completionBlock: completionBlock)
+    func getTrendingRepositories(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) {
+        self.networkRepository.getTrendingRepositoriesQuery(platform: platform, completionBlock: completionBlock)
+    }
+    
+    func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void) {
+        self.networkRepository.getContributorsNumberForRepository(repository: repository, completionBlock: completionBlock)
     }
 }

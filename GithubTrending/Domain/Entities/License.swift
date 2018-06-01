@@ -8,14 +8,16 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
+import ObjectMapper_Realm
 
-public class License: Mappable {
+public class License: Object, Mappable {
     var key: String?
     var name: String?
     var url: String?
     
-    required public init?(map: Map) {
-        
+    required convenience public init?(map: Map) {
+        self.init()
     }
     
     public func mapping(map: Map) {

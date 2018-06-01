@@ -15,7 +15,11 @@ public class GithubTrendingProvider {
         self.githubTrendingUseCase = GithubTrendingUseCase(networkRepository: GithubTrendingNetworkRepository())
     }
     
-    public func getTrendingRepositoriesQuery(completionBlock: @escaping ([GithubRepository]) -> Void) {
-        return githubTrendingUseCase.getTrendingRepositories(completionBlock: completionBlock)
+    public func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) {
+        return githubTrendingUseCase.getTrendingRepositories(platform: platform, completionBlock: completionBlock)
+    }
+    
+    public func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void) {
+        return githubTrendingUseCase.getContributorsNumberForRepository(repository: repository,completionBlock: completionBlock)
     }
 }

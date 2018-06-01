@@ -8,14 +8,17 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
+import ObjectMapper_Realm
 
-public class Owner: Mappable {
+public class Owner: Object, Mappable {
     var login: String?
     
-    required public init?(map: Map) {
-        
+    required convenience public init?(map: Map) {
+        self.init()
     }
     
     public func mapping(map: Map) {
+        login           <- map["login"]
     }
 }

@@ -26,8 +26,14 @@ class GithubTrendingCell: UITableViewCell {
         guard let repository = repository else {
             return
         }
-        self.nameLabel.text = repository.name
-        self.starsLabel.text = "\(repository.stars ?? 0)"
-        self.contributorsLabel.text = repository.license?.name
+        self.nameLabel.text = "\(repository.owner?.login ?? "no author name") / \(repository.name ?? "no repo name")"
+        self.starsLabel.text = "\(repository.stars ?? 0) \u{02b50}"
+        if let numberOfContributors = repository.contributors {
+            self.contributorsLabel.text = "\(numberOfContributors == 100 ? "+100" : "\(numberOfContributors)") \u{1f477}"
+        } else {
+            self.contributorsLabel.text = ""
+        }
+       
+        self.licenseLabel.text = repository.license?.name
     }
 }

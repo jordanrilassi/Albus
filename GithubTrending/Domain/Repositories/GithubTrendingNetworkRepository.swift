@@ -11,8 +11,8 @@ import ObjectMapper
 
 class GithubTrendingNetworkRepository {
     
-    func getTrendingRepositoriesQuery(completionBlock: @escaping ([GithubRepository]) -> Void) -> Void {
-        guard let url = URL(string: GithubTrendingConstants.API.urlString) else {
+    func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) -> Void {
+        guard let url = URL(string: "\(GithubTrendingConstants.API.urlString)\(platform)\(GithubTrendingConstants.API.parameters)") else {
             fatalError("Url not valid")
         }
         
@@ -29,12 +29,34 @@ class GithubTrendingNetworkRepository {
             guard let jsonData = json["items"] else {
                 return
             }
-//            var repositories = Mapper<GithubRepository>().mapArray(JSONArray: jsonData)! //Swift 3
-            let repositories = Mapper<GithubRepository>().mapArray(JSONObject: jsonData)
-            completionBlock(repositories!)
-//            if let restaurant = Mapper<Restaurant>().map(JSONObject: jsonData) {
-                //                completionBlock(restaurant)
-                //            }
+            guard let repositories = Mapper<GithubRepository>().mapArray(JSONObject: jsonData) else {
+                completionBlock([])
+                return
+            }
+            completionBlock(repositories)
+        }
+        task.resume()
+    }
+    
+    func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void) {
+        guard let contributors_url = repository.contributors_url, let url = URL(string: "\(contributors_url)?per_page=100") else {
+            fatalError("Url not valid")
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if error != nil {
+                fatalError(error!.localizedDescription)
+            }
+            guard let data = data else {
+                print("Data is empty")
+                return
+            }
+            let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]]
+            print(json)
+            guard let users = Mapper<Owner>().mapArray(JSONObject: json) else {
+                completionBlock(0)
+                return
+            }
+            completionBlock(users.count)
         }
         task.resume()
     }

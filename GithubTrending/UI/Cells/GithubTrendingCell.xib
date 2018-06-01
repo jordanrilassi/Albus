@@ -16,8 +16,8 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="94"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fc-cG-1qj">
-                    <rect key="frame" x="10" y="10" width="42" height="21"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8Fc-cG-1qj">
+                    <rect key="frame" x="10" y="10" width="303" height="21"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
@@ -48,6 +48,7 @@
                 <constraint firstItem="fxK-ui-9F4" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="KBt-U4-v2J"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="8jK-ZF-RhT" secondAttribute="bottom" constant="10" id="f8F-Lk-ZQ6"/>
                 <constraint firstItem="8Fc-cG-1qj" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" constant="10" id="i0a-AE-J4N"/>
+                <constraint firstItem="fxK-ui-9F4" firstAttribute="leading" secondItem="8Fc-cG-1qj" secondAttribute="trailing" constant="10" id="jkr-5D-Fow"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="fxK-ui-9F4" secondAttribute="trailing" constant="10" id="tza-GQ-8cj"/>
                 <constraint firstItem="8Fc-cG-1qj" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" constant="10" id="uhf-Wu-pmv"/>
                 <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="4E5-gi-VVT" secondAttribute="bottom" constant="10" id="yrk-7Y-iZt"/>

@@ -12,8 +12,9 @@
 		B45EB48C20C1893900F3AC28 /* GithubTrendingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45EB48B20C1893900F3AC28 /* GithubTrendingCell.xib */; };
 		B45EB48E20C1929000F3AC28 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB48D20C1929000F3AC28 /* Owner.swift */; };
 		B45EB49020C1929800F3AC28 /* License.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB48F20C1929800F3AC28 /* License.swift */; };
+		B45EB49420C1AB1800F3AC28 /* GithubRepositoryDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB49320C1AB1800F3AC28 /* GithubRepositoryDetailViewController.swift */; };
 		B471F08920C17263003DEF14 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471F08820C17263003DEF14 /* AppDelegate.swift */; };
-		B471F08B20C17263003DEF14 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471F08A20C17263003DEF14 /* ViewController.swift */; };
+		B471F08B20C17263003DEF14 /* GithubTrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471F08A20C17263003DEF14 /* GithubTrendingViewController.swift */; };
 		B471F08E20C17263003DEF14 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B471F08C20C17263003DEF14 /* Main.storyboard */; };
 		B471F09020C17264003DEF14 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B471F08F20C17264003DEF14 /* Assets.xcassets */; };
 		B471F09320C17264003DEF14 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B471F09120C17264003DEF14 /* LaunchScreen.storyboard */; };
@@ -31,9 +32,10 @@
 		B45EB48B20C1893900F3AC28 /* GithubTrendingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GithubTrendingCell.xib; sourceTree = "<group>"; };
 		B45EB48D20C1929000F3AC28 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
 		B45EB48F20C1929800F3AC28 /* License.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = License.swift; sourceTree = "<group>"; };
+		B45EB49320C1AB1800F3AC28 /* GithubRepositoryDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubRepositoryDetailViewController.swift; sourceTree = "<group>"; };
 		B471F08520C17263003DEF14 /* GithubTrending.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GithubTrending.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B471F08820C17263003DEF14 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		B471F08A20C17263003DEF14 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		B471F08A20C17263003DEF14 /* GithubTrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubTrendingViewController.swift; sourceTree = "<group>"; };
 		B471F08D20C17263003DEF14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		B471F08F20C17264003DEF14 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B471F09220C17264003DEF14 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -66,6 +68,25 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		B45EB49120C1AAC400F3AC28 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				B45EB48920C187C700F3AC28 /* GithubTrendingCell.swift */,
+				B45EB48B20C1893900F3AC28 /* GithubTrendingCell.xib */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		B45EB49220C1AAD900F3AC28 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				B471F08A20C17263003DEF14 /* GithubTrendingViewController.swift */,
+				B45EB49320C1AB1800F3AC28 /* GithubRepositoryDetailViewController.swift */,
+			);
+			name = ViewControllers;
+			path = GithubTrending/UI/ViewControllers;
+			sourceTree = SOURCE_ROOT;
+		};
 		B471F07C20C17263003DEF14 = {
 			isa = PBXGroup;
 			children = (
@@ -93,7 +114,6 @@
 				B471F09E20C173A4003DEF14 /* UI */,
 				B471F09F20C173A4003DEF14 /* Utils */,
 				B471F08820C17263003DEF14 /* AppDelegate.swift */,
-				B471F08A20C17263003DEF14 /* ViewController.swift */,
 				B471F08C20C17263003DEF14 /* Main.storyboard */,
 				B471F08F20C17264003DEF14 /* Assets.xcassets */,
 				B471F09120C17264003DEF14 /* LaunchScreen.storyboard */,
@@ -123,8 +143,8 @@
 		B471F09E20C173A4003DEF14 /* UI */ = {
 			isa = PBXGroup;
 			children = (
-				B45EB48920C187C700F3AC28 /* GithubTrendingCell.swift */,
-				B45EB48B20C1893900F3AC28 /* GithubTrendingCell.xib */,
+				B45EB49220C1AAD900F3AC28 /* ViewControllers */,
+				B45EB49120C1AAC400F3AC28 /* Cells */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -258,12 +278,14 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-GithubTrending/Pods-GithubTrending-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper+Realm/ObjectMapper_Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper_Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
 			);
@@ -314,7 +336,8 @@
 			files = (
 				B471F0A320C17546003DEF14 /* GithubRepository.swift in Sources */,
 				B45EB48A20C187C700F3AC28 /* GithubTrendingCell.swift in Sources */,
-				B471F08B20C17263003DEF14 /* ViewController.swift in Sources */,
+				B45EB49420C1AB1800F3AC28 /* GithubRepositoryDetailViewController.swift in Sources */,
+				B471F08B20C17263003DEF14 /* GithubTrendingViewController.swift in Sources */,
 				B471F0A620C17713003DEF14 /* GithubTrendingProvider.swift in Sources */,
 				B45EB48E20C1929000F3AC28 /* Owner.swift in Sources */,
 				B471F09C20C1729C003DEF14 /* GithubTrendingConstants.swift in Sources */,
@@ -469,10 +492,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJNMHBPAPG;
 				INFOPLIST_FILE = GithubTrending/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jordanrilassi.GithubTrending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -488,10 +508,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJNMHBPAPG;
 				INFOPLIST_FILE = GithubTrending/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-				);
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.jordanrilassi.GithubTrending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

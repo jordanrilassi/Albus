@@ -8,5 +8,7 @@ target 'GithubTrending' do
   # Pods for GithubTrending
 	pod 'RealmSwift'
     pod 'ObjectMapper', '~> 3.2'
+    pod 'ObjectMapper+Realm'
+
 
 end
