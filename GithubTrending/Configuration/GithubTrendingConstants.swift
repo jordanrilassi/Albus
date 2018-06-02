@@ -24,8 +24,8 @@ enum GithubTrendingConstants {
     }
     
     struct Platforms {
-        static let android = "android"
-        static let ios = "ios"
+        static let android = "Android"
+        static let ios = "iOS"
     }
     
     struct String {
@@ -35,7 +35,9 @@ enum GithubTrendingConstants {
     }
     
     struct Config {
-        static let numberOfCells = 3
+        static let numberOfCells = 6
+        static let trendingViewCellHeight = 80
+        static let detailViewCellHeight = 60
     }
     
     struct Realm {

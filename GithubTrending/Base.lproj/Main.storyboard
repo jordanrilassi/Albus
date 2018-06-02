@@ -32,8 +32,19 @@
                             <outlet property="delegate" destination="Nhz-zu-vSH" id="IU2-ai-UdI"/>
                         </connections>
                     </tableView>
+                    <connections>
+                        <outlet property="searchDisplayController" destination="BBr-u2-Nwh" id="L2V-Vc-1wj"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="syi-MG-PIh" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <searchDisplayController id="BBr-u2-Nwh">
+                    <connections>
+                        <outlet property="delegate" destination="Nhz-zu-vSH" id="ibW-Iw-aLP"/>
+                        <outlet property="searchContentsController" destination="Nhz-zu-vSH" id="3Jp-5W-rKI"/>
+                        <outlet property="searchResultsDataSource" destination="Nhz-zu-vSH" id="Rxy-gc-arI"/>
+                        <outlet property="searchResultsDelegate" destination="Nhz-zu-vSH" id="RL0-an-qtq"/>
+                    </connections>
+                </searchDisplayController>
             </objects>
             <point key="canvasLocation" x="-1630" y="133"/>
         </scene>

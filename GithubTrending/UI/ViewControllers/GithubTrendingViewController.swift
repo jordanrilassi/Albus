@@ -12,20 +12,32 @@ import RealmSwift
 class GithubTrendingViewController: UITableViewController {
     private let githubTrendingProvider = GithubTrendingProvider()
     private var githubRepositories = List<GithubRepository>()
-    private var repositoriesList = List<GithubRepository>()
     private var androidButton: UIBarButtonItem = UIBarButtonItem(title: GithubTrendingConstants.String.showAndroid, style: .done, target: self, action: #selector(GithubTrendingViewController.myRightSideBarButtonItemTapped))
     private var platform = GithubTrendingConstants.Platforms.ios
-
+    private var indicator = UIActivityIndicatorView()
+    
+    func activityIndicator() {
+        self.tableView.backgroundView = indicator
+        self.tableView.separatorStyle = .none
+        indicator.activityIndicatorViewStyle = UIActivityIndicatorViewStyle.gray
+        indicator.center = self.view.center
+        indicator.startAnimating()
+    }
+    
+    func stopActivityIndicator() {
+        self.tableView.separatorStyle = .singleLine
+        indicator.stopAnimating()
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.title = GithubTrendingConstants.String.homePageTitle
+
         self.navigationItem.rightBarButtonItem = androidButton
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: GithubTrendingConstants.String.showAndroid, style: .done, target: self, action: #selector(GithubTrendingViewController.myRightSideBarButtonItemTapped))
 
-        
         let nib = UINib(nibName: GithubTrendingConstants.Cells.trendingCellNibName, bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: GithubTrendingConstants.Cells.trendingCellIdentifier)
+        
         
         self.getRepositories(platform: platform)
     }
@@ -40,10 +52,17 @@ class GithubTrendingViewController: UITableViewController {
     }
     
     func getRepositories(platform: String) {
+        self.githubRepositories.removeAll()
+        self.tableView.reloadData()
+        self.title = "\(GithubTrendingConstants.String.homePageTitle) \(platform)"
+
+        
+        self.activityIndicator()
         let apiPlatform = self.githubTrendingProvider.getApiPlatformWithPlatform(platform: platform)
         self.githubTrendingProvider.getTrendingRepositoriesQuery(platform: apiPlatform) { [weak self] result in
             self?.githubRepositories = result
             DispatchQueue.main.async {
+                self?.stopActivityIndicator()
                 self?.tableView.reloadData()
             }
             
@@ -66,7 +85,6 @@ class GithubTrendingViewController: UITableViewController {
         self.platform = self.platform == GithubTrendingConstants.Platforms.android ? GithubTrendingConstants.Platforms.ios : GithubTrendingConstants.Platforms.android
         self.navigationItem.rightBarButtonItem?.title = self.platform == GithubTrendingConstants.Platforms.android ? GithubTrendingConstants.String.showIOS : GithubTrendingConstants.String.showAndroid
         self.getRepositories(platform: self.platform)
-        print("myRightSideBarButtonItemTapped")
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -74,7 +92,7 @@ class GithubTrendingViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 80
+        return CGFloat(GithubTrendingConstants.Config.trendingViewCellHeight)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

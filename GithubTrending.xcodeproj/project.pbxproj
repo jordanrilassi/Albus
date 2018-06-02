@@ -120,9 +120,7 @@
 			children = (
 				B471F09A20C1727C003DEF14 /* Configuration */,
 				B471F09D20C173A4003DEF14 /* Domain */,
-				B471F0A020C173A4003DEF14 /* Platform */,
 				B471F09E20C173A4003DEF14 /* UI */,
-				B471F09F20C173A4003DEF14 /* Utils */,
 				B471F08820C17263003DEF14 /* AppDelegate.swift */,
 				B471F08C20C17263003DEF14 /* Main.storyboard */,
 				B471F08F20C17264003DEF14 /* Assets.xcassets */,
@@ -143,6 +141,7 @@
 		B471F09D20C173A4003DEF14 /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				B471F0A020C173A4003DEF14 /* Platform */,
 				B471F0A120C1752B003DEF14 /* Entities */,
 				B471F0A920C17805003DEF14 /* Repositories */,
 				B471F0A420C17620003DEF14 /* UseCases */,
@@ -159,16 +158,11 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
-		B471F09F20C173A4003DEF14 /* Utils */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Utils;
-			sourceTree = "<group>";
-		};
 		B471F0A020C173A4003DEF14 /* Platform */ = {
 			isa = PBXGroup;
 			children = (
+				B444F8AC20C28DAD00ADDB5A /* GithubCachedRepository.swift */,
+				B444F8AE20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -196,8 +190,6 @@
 			isa = PBXGroup;
 			children = (
 				B471F0AA20C17814003DEF14 /* GithubTrendingNetworkRepository.swift */,
-				B444F8AC20C28DAD00ADDB5A /* GithubCachedRepository.swift */,
-				B444F8AE20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";

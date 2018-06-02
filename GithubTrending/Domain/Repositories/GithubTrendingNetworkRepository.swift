@@ -38,6 +38,10 @@ class GithubTrendingNetworkRepository: GithubTrendingRepositoryProtocol {
             for repository in repositories {
                 repositoryList.append(repository)
             }
+//            let cachedRepository = GithubCachedRepository()
+//            cachedRepository.repositories = repositoryList
+//            cachedRepository.saveRealmRepositoriesArray()
+            
             completionBlock(repositoryList)
         }
         task.resume()
