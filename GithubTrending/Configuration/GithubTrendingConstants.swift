@@ -18,11 +18,23 @@ enum GithubTrendingConstants {
     
     struct Cells {
         static let trendingCellIdentifier = "trendingCellIdentifier"
+        static let detailCellIdentifier = "detailCellIdentifier"
+        static let trendingCellNibName = "GithubTrendingCell"
+        static let detailCellNibName = "GithubDetailCell"
+    }
+    
+    struct Platforms {
+        static let android = "android"
+        static let ios = "ios"
     }
     
     struct String {
         static let homePageTitle = "Trending"
         static let showIOS = "Show iOS"
         static let showAndroid = "Show Android"
+    }
+    
+    struct Config {
+        static let numberOfCells = 3
     }
 }

@@ -15,11 +15,14 @@ class GithubTrendingCell: UITableViewCell {
     @IBOutlet weak var contributorsLabel: UILabel!
     @IBOutlet weak var licenseLabel: UILabel!
     
-    private var repository: GithubRepository?
+    private var repository: GithubRepository? {
+        didSet {
+            setUI()
+        }
+    }
     
     func setRepository(repository: GithubRepository) {
         self.repository = repository
-        self.setUI()
     }
     
     func setUI() {

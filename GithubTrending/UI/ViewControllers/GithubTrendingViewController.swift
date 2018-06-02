@@ -7,29 +7,46 @@
 //
 
 import UIKit
+import RealmSwift
 
 class GithubTrendingViewController: UITableViewController {
     private let githubTrendingProvider = GithubTrendingProvider()
     private var githubRepositories = [GithubRepository]()
-    var androidButton: UIBarButtonItem = UIBarButtonItem(title: GithubTrendingConstants.String.showAndroid, style: .done, target: self, action: #selector(GithubTrendingViewController.myRightSideBarButtonItemTapped))
+    private var repositoriesList = List<GithubRepository>()
+    private var androidButton: UIBarButtonItem = UIBarButtonItem(title: GithubTrendingConstants.String.showAndroid, style: .done, target: self, action: #selector(GithubTrendingViewController.myRightSideBarButtonItemTapped))
+    private var platform = GithubTrendingConstants.Platforms.ios
 
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.title = GithubTrendingConstants.String.homePageTitle
         self.navigationItem.rightBarButtonItem = androidButton
-        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Show Android", style: .done, target: self, action: #selector(GithubTrendingViewController.myRightSideBarButtonItemTapped))
+        self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: GithubTrendingConstants.String.showAndroid, style: .done, target: self, action: #selector(GithubTrendingViewController.myRightSideBarButtonItemTapped))
 
         
-        let nib = UINib(nibName: "GithubTrendingCell", bundle: nil)
+        let nib = UINib(nibName: GithubTrendingConstants.Cells.trendingCellNibName, bundle: nil)
         self.tableView.register(nib, forCellReuseIdentifier: GithubTrendingConstants.Cells.trendingCellIdentifier)
         
-        self.githubTrendingProvider.getTrendingRepositoriesQuery(platform: GithubTrendingConstants.API.ios) { [weak self] result in
+        self.getRepositories(platform: platform)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+    }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    func getRepositories(platform: String) {
+        let apiPlatform = self.githubTrendingProvider.getApiPlatformWithPlatform(platform: platform)
+        self.githubTrendingProvider.getTrendingRepositoriesQuery(platform: apiPlatform) { [weak self] result in
             self?.githubRepositories = result
             DispatchQueue.main.async {
                 self?.tableView.reloadData()
             }
-
+            
             let myGroup = DispatchGroup()
             for repository in (self?.githubRepositories)! {
                 myGroup.enter()
@@ -44,19 +61,11 @@ class GithubTrendingViewController: UITableViewController {
         }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidDisappear(animated)
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     @objc func myRightSideBarButtonItemTapped(_ sender:UIBarButtonItem!)
     {
-        self.navigationItem.rightBarButtonItem?.title = self.navigationItem.rightBarButtonItem?.title == GithubTrendingConstants.String.showAndroid ? GithubTrendingConstants.String.showIOS : GithubTrendingConstants.String.showAndroid
-        
+        self.platform = self.platform == GithubTrendingConstants.Platforms.android ? GithubTrendingConstants.Platforms.ios : GithubTrendingConstants.Platforms.android
+        self.navigationItem.rightBarButtonItem?.title = self.platform == GithubTrendingConstants.Platforms.android ? GithubTrendingConstants.String.showIOS : GithubTrendingConstants.String.showAndroid
+        self.getRepositories(platform: self.platform)
         print("myRightSideBarButtonItemTapped")
     }
     

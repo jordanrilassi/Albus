@@ -22,4 +22,9 @@ public class GithubTrendingProvider {
     public func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void) {
         return githubTrendingUseCase.getContributorsNumberForRepository(repository: repository,completionBlock: completionBlock)
     }
+    
+    public func getApiPlatformWithPlatform(platform: String) -> String {
+        let apiPlatform = platform == GithubTrendingConstants.Platforms.ios ? GithubTrendingConstants.API.ios : GithubTrendingConstants.API.android
+        return apiPlatform
+    }
 }

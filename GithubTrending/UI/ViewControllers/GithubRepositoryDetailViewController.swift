@@ -6,18 +6,19 @@
 //  Copyright © 2018 jordanrilassi. All rights reserved.
 //
 
-import Foundation
 import UIKit
 
-class GithubRepositoryDetailViewController : UIViewController {
-    private var repository: GithubRepository?
-    @IBOutlet weak var titleLabel: UILabel!
-    @IBOutlet weak var descriptionLabel: UILabel!
-    @IBOutlet weak var otherLabel: UILabel!
+class GithubRepositoryDetailViewController : UITableViewController {
+    private var repository: GithubRepository? {
+        didSet {
+            setUI()
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setUI()
+        let nib = UINib(nibName: GithubTrendingConstants.Cells.detailCellNibName, bundle: nil)
+        self.tableView.register(nib, forCellReuseIdentifier: GithubTrendingConstants.Cells.detailCellIdentifier)
     }
     
     func setRepository(repository: GithubRepository) {
@@ -25,8 +26,25 @@ class GithubRepositoryDetailViewController : UIViewController {
     }
     
     func setUI() {
-        self.titleLabel.text = repository?.name
-        self.descriptionLabel.text = repository?.repoDescription
-        self.otherLabel.text = repository?.license?.name
+        self.title = repository?.name
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return GithubTrendingConstants.Config.numberOfCells
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: GithubTrendingConstants.Cells.detailCellIdentifier, for: indexPath) as! GithubDetailCell
+//        if indexPath.row == 0 {
+//            cell.titleLabel.text = "Author :"
+//            cell.contentLabel.text = repository?.owner?.login
+//        } else if indexPath.row == 1 {
+//            cell.titleLabel.text = "Description : "
+//            cell.contentLabel.text = repository?.repoDescription
+//        } else {
+//            cell.titleLabel.text = "Number of contributors : "
+//            cell.contentLabel.text = "\(repository?.contributors ?? 0)"
+//        }
+        return cell
     }
 }

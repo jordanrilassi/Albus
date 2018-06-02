@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		4A87603E5E1620C62787E089 /* Pods_GithubTrending.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 33D90156E1FE73ABF8886F37 /* Pods_GithubTrending.framework */; };
+		B444F8AD20C28DAD00ADDB5A /* GithubCachedRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B444F8AC20C28DAD00ADDB5A /* GithubCachedRepository.swift */; };
+		B444F8AF20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = B444F8AE20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift */; };
 		B45EB48A20C187C700F3AC28 /* GithubTrendingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB48920C187C700F3AC28 /* GithubTrendingCell.swift */; };
 		B45EB48C20C1893900F3AC28 /* GithubTrendingCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B45EB48B20C1893900F3AC28 /* GithubTrendingCell.xib */; };
 		B45EB48E20C1929000F3AC28 /* Owner.swift in Sources */ = {isa = PBXBuildFile; fileRef = B45EB48D20C1929000F3AC28 /* Owner.swift */; };
@@ -23,11 +25,15 @@
 		B471F0A620C17713003DEF14 /* GithubTrendingProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471F0A520C17713003DEF14 /* GithubTrendingProvider.swift */; };
 		B471F0A820C17740003DEF14 /* GithubTrendingUseCase.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471F0A720C17740003DEF14 /* GithubTrendingUseCase.swift */; };
 		B471F0AB20C17814003DEF14 /* GithubTrendingNetworkRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = B471F0AA20C17814003DEF14 /* GithubTrendingNetworkRepository.swift */; };
+		B4DB511E20C2922200B0D0AA /* GithubDetailCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B4DB511D20C2922200B0D0AA /* GithubDetailCell.swift */; };
+		B4DB512020C2923100B0D0AA /* GithubDetailCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B4DB511F20C2923000B0D0AA /* GithubDetailCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		33D90156E1FE73ABF8886F37 /* Pods_GithubTrending.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_GithubTrending.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		748AA6822944F739F20FB9B1 /* Pods-GithubTrending.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubTrending.debug.xcconfig"; path = "Pods/Target Support Files/Pods-GithubTrending/Pods-GithubTrending.debug.xcconfig"; sourceTree = "<group>"; };
+		B444F8AC20C28DAD00ADDB5A /* GithubCachedRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubCachedRepository.swift; sourceTree = "<group>"; };
+		B444F8AE20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubTrendingRepositoryProtocol.swift; sourceTree = "<group>"; };
 		B45EB48920C187C700F3AC28 /* GithubTrendingCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubTrendingCell.swift; sourceTree = "<group>"; };
 		B45EB48B20C1893900F3AC28 /* GithubTrendingCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GithubTrendingCell.xib; sourceTree = "<group>"; };
 		B45EB48D20C1929000F3AC28 /* Owner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Owner.swift; sourceTree = "<group>"; };
@@ -45,6 +51,8 @@
 		B471F0A520C17713003DEF14 /* GithubTrendingProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubTrendingProvider.swift; sourceTree = "<group>"; };
 		B471F0A720C17740003DEF14 /* GithubTrendingUseCase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubTrendingUseCase.swift; sourceTree = "<group>"; };
 		B471F0AA20C17814003DEF14 /* GithubTrendingNetworkRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubTrendingNetworkRepository.swift; sourceTree = "<group>"; };
+		B4DB511D20C2922200B0D0AA /* GithubDetailCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubDetailCell.swift; sourceTree = "<group>"; };
+		B4DB511F20C2923000B0D0AA /* GithubDetailCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = GithubDetailCell.xib; sourceTree = "<group>"; };
 		CDCFA87C049D1AC5C87200C1 /* Pods-GithubTrending.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-GithubTrending.release.xcconfig"; path = "Pods/Target Support Files/Pods-GithubTrending/Pods-GithubTrending.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -73,6 +81,8 @@
 			children = (
 				B45EB48920C187C700F3AC28 /* GithubTrendingCell.swift */,
 				B45EB48B20C1893900F3AC28 /* GithubTrendingCell.xib */,
+				B4DB511D20C2922200B0D0AA /* GithubDetailCell.swift */,
+				B4DB511F20C2923000B0D0AA /* GithubDetailCell.xib */,
 			);
 			path = Cells;
 			sourceTree = "<group>";
@@ -186,6 +196,8 @@
 			isa = PBXGroup;
 			children = (
 				B471F0AA20C17814003DEF14 /* GithubTrendingNetworkRepository.swift */,
+				B444F8AC20C28DAD00ADDB5A /* GithubCachedRepository.swift */,
+				B444F8AE20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -263,6 +275,7 @@
 				B471F09320C17264003DEF14 /* LaunchScreen.storyboard in Resources */,
 				B45EB48C20C1893900F3AC28 /* GithubTrendingCell.xib in Resources */,
 				B471F09020C17264003DEF14 /* Assets.xcassets in Resources */,
+				B4DB512020C2923100B0D0AA /* GithubDetailCell.xib in Resources */,
 				B471F08E20C17263003DEF14 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,13 +348,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				B471F0A320C17546003DEF14 /* GithubRepository.swift in Sources */,
+				B4DB511E20C2922200B0D0AA /* GithubDetailCell.swift in Sources */,
 				B45EB48A20C187C700F3AC28 /* GithubTrendingCell.swift in Sources */,
+				B444F8AD20C28DAD00ADDB5A /* GithubCachedRepository.swift in Sources */,
 				B45EB49420C1AB1800F3AC28 /* GithubRepositoryDetailViewController.swift in Sources */,
 				B471F08B20C17263003DEF14 /* GithubTrendingViewController.swift in Sources */,
 				B471F0A620C17713003DEF14 /* GithubTrendingProvider.swift in Sources */,
 				B45EB48E20C1929000F3AC28 /* Owner.swift in Sources */,
 				B471F09C20C1729C003DEF14 /* GithubTrendingConstants.swift in Sources */,
 				B471F0AB20C17814003DEF14 /* GithubTrendingNetworkRepository.swift in Sources */,
+				B444F8AF20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift in Sources */,
 				B45EB49020C1929800F3AC28 /* License.swift in Sources */,
 				B471F08920C17263003DEF14 /* AppDelegate.swift in Sources */,
 				B471F0A820C17740003DEF14 /* GithubTrendingUseCase.swift in Sources */,
@@ -492,7 +508,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJNMHBPAPG;
 				INFOPLIST_FILE = GithubTrending/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jordanrilassi.GithubTrending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;
@@ -508,7 +527,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = UJNMHBPAPG;
 				INFOPLIST_FILE = GithubTrending/Info.plist;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.jordanrilassi.GithubTrending;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 4.0;

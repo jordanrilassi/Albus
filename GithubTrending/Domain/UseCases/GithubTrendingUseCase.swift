@@ -15,8 +15,8 @@ public protocol GithubTrendingUseCaseProtocol {
 
 final class GithubTrendingUseCase: GithubTrendingUseCaseProtocol {
     
-    
     private let networkRepository: GithubTrendingNetworkRepository
+//    private let cachedRepository: Github
     
     init(networkRepository: GithubTrendingNetworkRepository) {
         self.networkRepository = networkRepository

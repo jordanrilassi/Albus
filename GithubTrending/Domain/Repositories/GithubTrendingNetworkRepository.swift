@@ -9,7 +9,7 @@
 import Foundation
 import ObjectMapper
 
-class GithubTrendingNetworkRepository {
+class GithubTrendingNetworkRepository: GithubTrendingRepositoryProtocol {
     
     func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) -> Void {
         guard let url = URL(string: "\(GithubTrendingConstants.API.urlString)\(platform)\(GithubTrendingConstants.API.parameters)") else {
@@ -25,7 +25,6 @@ class GithubTrendingNetworkRepository {
                 return
             }
             let json = try! JSONSerialization.jsonObject(with: data, options: []) as! Dictionary<String, AnyObject>
-            print(json)
             guard let jsonData = json["items"] else {
                 return
             }
@@ -39,25 +38,26 @@ class GithubTrendingNetworkRepository {
     }
     
     func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void) {
-        guard let contributors_url = repository.contributors_url, let url = URL(string: "\(contributors_url)?per_page=100") else {
-            fatalError("Url not valid")
-        }
-        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-            if error != nil {
-                fatalError(error!.localizedDescription)
-            }
-            guard let data = data else {
-                print("Data is empty")
-                return
-            }
-            let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]]
-            print(json)
-            guard let users = Mapper<Owner>().mapArray(JSONObject: json) else {
-                completionBlock(0)
-                return
-            }
-            completionBlock(users.count)
-        }
-        task.resume()
+//        guard let contributors_url = repository.contributors_url, let url = URL(string: "\(contributors_url)?per_page=100") else {
+//            fatalError("Url not valid")
+//        }
+//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+//            if error != nil {
+//                fatalError(error!.localizedDescription)
+//            }
+//            guard let data = data else {
+//                print("Data is empty")
+//                return
+//            }
+//            let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]]
+//            guard let users = Mapper<Owner>().mapArray(JSONObject: json) else {
+//                completionBlock(0)
+//                return
+//            }
+//            completionBlock(users.count)
+//        }
+//        task.resume()
+        completionBlock(0)
+
     }
 }
