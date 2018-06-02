@@ -72,6 +72,7 @@ class GithubTrendingViewController: UITableViewController {
             }
             for repository in repositories {
                 myGroup.enter()
+                // J'ai eu un problème au dernier moment avec le DispatchGroup, je n'ai pas eu le temps de le régler totalement
                 self?.githubTrendingProvider.getContributorsNumberForRepository(repository: repository, completionBlock: { [weak myGroup] result in
                     repository.contributors = result
                     myGroup?.leave()
