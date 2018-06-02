@@ -162,7 +162,7 @@
 			isa = PBXGroup;
 			children = (
 				B444F8AC20C28DAD00ADDB5A /* GithubCachedRepository.swift */,
-				B444F8AE20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift */,
+				B471F0AA20C17814003DEF14 /* GithubTrendingNetworkRepository.swift */,
 			);
 			path = Platform;
 			sourceTree = "<group>";
@@ -189,7 +189,7 @@
 		B471F0A920C17805003DEF14 /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
-				B471F0AA20C17814003DEF14 /* GithubTrendingNetworkRepository.swift */,
+				B444F8AE20C28E4600ADDB5A /* GithubTrendingRepositoryProtocol.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";

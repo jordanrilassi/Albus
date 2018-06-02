@@ -48,25 +48,26 @@ class GithubTrendingNetworkRepository: GithubTrendingRepositoryProtocol {
     }
     
     func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void) {
-//        guard let contributors_url = repository.contributors_url, let url = URL(string: "\(contributors_url)?per_page=100") else {
-//            fatalError("Url not valid")
-//        }
-//        let task = URLSession.shared.dataTask(with: url) { data, response, error in
-//            if error != nil {
-//                fatalError(error!.localizedDescription)
-//            }
-//            guard let data = data else {
-//                print("Data is empty")
-//                return
-//            }
-//            let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]]
-//            guard let users = Mapper<Owner>().mapArray(JSONObject: json) else {
-//                completionBlock(0)
-//                return
-//            }
-//            completionBlock(users.count)
-//        }
-//        task.resume()
+        guard let contributors_url = repository.contributors_url, let url = URL(string: "\(contributors_url)?per_page=100") else {
+            fatalError("Url not valid")
+        }
+        let task = URLSession.shared.dataTask(with: url) { data, response, error in
+            if error != nil {
+                fatalError(error!.localizedDescription)
+            }
+            guard let data = data else {
+                print("Data is empty")
+                completionBlock(0)
+                return
+            }
+            let json = try! JSONSerialization.jsonObject(with: data, options: []) as! [[String: Any]]
+            guard let users = Mapper<Owner>().mapArray(JSONObject: json) else {
+                completionBlock(0)
+                return
+            }
+            completionBlock(users.count)
+        }
+        task.resume()
         completionBlock(0)
 
     }

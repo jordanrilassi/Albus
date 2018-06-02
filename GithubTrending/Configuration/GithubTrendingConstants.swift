@@ -41,7 +41,7 @@ enum GithubTrendingConstants {
     }
     
     struct Realm {
-        static let MY_INSTANCE_ADDRESS = "githubtrendingtest.us1.cloud.realm.io" // <- update this
+        static let MY_INSTANCE_ADDRESS = "githubtrendingtest.us1.cloud.realm.io" //
         
         static let AUTH_URL  = URL(string: "https://\(MY_INSTANCE_ADDRESS)")!
         static let REALM_URL = URL(string: "realms://\(MY_INSTANCE_ADDRESS)/ToDo")!

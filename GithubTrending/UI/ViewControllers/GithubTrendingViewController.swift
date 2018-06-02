@@ -67,11 +67,14 @@ class GithubTrendingViewController: UITableViewController {
             }
             
             let myGroup = DispatchGroup()
-            for repository in (self?.githubRepositories)! {
+            guard let repositories = self?.githubRepositories else {
+                return
+            }
+            for repository in repositories {
                 myGroup.enter()
-                self?.githubTrendingProvider.getContributorsNumberForRepository(repository: repository, completionBlock: { result in
+                self?.githubTrendingProvider.getContributorsNumberForRepository(repository: repository, completionBlock: { [weak myGroup] result in
                     repository.contributors = result
-                    myGroup.leave()
+                    myGroup?.leave()
                 })
             }
             myGroup.notify(queue: .main) {
