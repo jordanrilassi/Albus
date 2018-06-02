@@ -10,47 +10,27 @@ import Foundation
 import RealmSwift
 
 class GithubCachedRepository: GithubTrendingRepositoryProtocol {
-    var realm: Realm!
+    let realm: Realm
+    var repositories = List<GithubRepository>()
     
-    func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) {
-        
+    init() {
+        let syncConfig = SyncConfiguration(user: SyncUser.current!, realmURL: GithubTrendingConstants.Realm.REALM_URL)
+        self.realm = try! Realm(configuration: Realm.Configuration(syncConfiguration: syncConfig, objectTypes:[GithubRepository.self]))
+    }
+
+    func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping (List<GithubRepository>) -> Void) {
+        if let list = self.realm.objects(RepositoryList.self).first {
+            completionBlock(list.items)
+        }
     }
     
     func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping (Int) -> Void) {
         
     }
     
-    func setupRealm() {
-        // Log in existing user with username and password
-        let username = "jordan.rilassi@gmail.com"  // <--- Update this
-        let password = "mavieprivee"  // <--- Update this
-        
-        SyncUser.logIn(with: .usernamePassword(username: username, password: password, register: false), server: URL(string: "http://127.0.0.1:9080")!) { user, error in
-            guard let user = user else {
-                fatalError(String(describing: error))
-            }
-            
-            DispatchQueue.main.async {
-                // Open Realm
-                let configuration = Realm.Configuration(
-                    syncConfiguration: SyncConfiguration(user: user, realmURL: URL(string: "realmtestjordan.us1.cloud.realm.io")!)
-                )
-                self.realm = try! Realm(configuration: configuration)
-                
-                // Show initial tasks
-//                func updateList() {
-//                    if self.items.realm == nil, let list = self.realm.objects(TaskList.self).first {
-//                        self.items = list.items
-//                    }
-//                    self.tableView.reloadData()
-//                }
-//                updateList()
-//                
-//                // Notify us when Realm changes
-//                self.notificationToken = self.realm.observe { _,_ in
-//                    updateList()
-//                }
-            }
+    @objc func saveRealmRepositoriesArray() {
+        try! realm.write {
+            realm.add(repositories)
         }
     }
 }

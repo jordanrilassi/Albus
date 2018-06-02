@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import RealmSwift
 
 public class GithubTrendingProvider {
     private var githubTrendingUseCase:GithubTrendingUseCase
@@ -15,7 +16,7 @@ public class GithubTrendingProvider {
         self.githubTrendingUseCase = GithubTrendingUseCase(networkRepository: GithubTrendingNetworkRepository())
     }
     
-    public func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) {
+    public func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping (List<GithubRepository>) -> Void) {
         return githubTrendingUseCase.getTrendingRepositories(platform: platform, completionBlock: completionBlock)
     }
     

@@ -11,7 +11,7 @@ import RealmSwift
 
 class GithubTrendingViewController: UITableViewController {
     private let githubTrendingProvider = GithubTrendingProvider()
-    private var githubRepositories = [GithubRepository]()
+    private var githubRepositories = List<GithubRepository>()
     private var repositoriesList = List<GithubRepository>()
     private var androidButton: UIBarButtonItem = UIBarButtonItem(title: GithubTrendingConstants.String.showAndroid, style: .done, target: self, action: #selector(GithubTrendingViewController.myRightSideBarButtonItemTapped))
     private var platform = GithubTrendingConstants.Platforms.ios

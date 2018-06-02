@@ -8,10 +8,11 @@
 
 import Foundation
 import ObjectMapper
+import RealmSwift
 
 class GithubTrendingNetworkRepository: GithubTrendingRepositoryProtocol {
     
-    func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) -> Void {
+    func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping (List<GithubRepository>) -> Void) -> Void {
         guard let url = URL(string: "\(GithubTrendingConstants.API.urlString)\(platform)\(GithubTrendingConstants.API.parameters)") else {
             fatalError("Url not valid")
         }
@@ -28,11 +29,16 @@ class GithubTrendingNetworkRepository: GithubTrendingRepositoryProtocol {
             guard let jsonData = json["items"] else {
                 return
             }
+            
             guard let repositories = Mapper<GithubRepository>().mapArray(JSONObject: jsonData) else {
-                completionBlock([])
+                completionBlock(List<GithubRepository>())
                 return
             }
-            completionBlock(repositories)
+            let repositoryList = List<GithubRepository>()
+            for repository in repositories {
+                repositoryList.append(repository)
+            }
+            completionBlock(repositoryList)
         }
         task.resume()
     }

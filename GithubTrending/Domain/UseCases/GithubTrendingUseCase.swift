@@ -7,9 +7,10 @@
 //
 
 import Foundation
+import RealmSwift
 
 public protocol GithubTrendingUseCaseProtocol {
-    func getTrendingRepositories(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) -> Void
+    func getTrendingRepositories(platform: String, completionBlock: @escaping (List<GithubRepository>) -> Void) -> Void
     func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void)
 }
 
@@ -22,7 +23,7 @@ final class GithubTrendingUseCase: GithubTrendingUseCaseProtocol {
         self.networkRepository = networkRepository
     }
 
-    func getTrendingRepositories(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) {
+    func getTrendingRepositories(platform: String, completionBlock: @escaping (List<GithubRepository>) -> Void) {
         self.networkRepository.getTrendingRepositoriesQuery(platform: platform, completionBlock: completionBlock)
     }
     

@@ -35,3 +35,12 @@ public class GithubRepository: Object, Mappable {
         contributors_url        <- map["contributors_url"]
     }
 }
+
+final class RepositoryList: Object {
+    @objc dynamic var id = ""
+    let items = List<GithubRepository>()
+    
+    override static func primaryKey() -> String? {
+        return "id"
+    }
+}

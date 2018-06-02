@@ -7,8 +7,9 @@
 //
 
 import Foundation
+import RealmSwift
 
 public protocol GithubTrendingRepositoryProtocol {
-    func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping ([GithubRepository]) -> Void) -> Void
+    func getTrendingRepositoriesQuery(platform: String, completionBlock: @escaping (List<GithubRepository>) -> Void) -> Void
     func getContributorsNumberForRepository(repository: GithubRepository, completionBlock: @escaping(Int) -> Void)
 }
